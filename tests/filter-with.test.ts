@@ -1,5 +1,5 @@
-import { data } from '../data/data';
 import { filterWith } from '../filter-with';
+import { data } from './data/data';
 
 test('Filter an array by a not embedded string field.', () => {
   expect(filterWith(data, 'Cummings Baxter'))
@@ -111,10 +111,15 @@ test('Filter an array by an embedded string field in the friends object.', () =>
     ]);
 });
 
-test('Returns an empty array when the phrase has less than 3 chars.', () => {
-  expect(filterWith(data, 'Lu'))
-    .toStrictEqual([]);
-});
+test(
+  'Return an empty array when the phrase has less than consecutive 3 chars or an empty array is given.',
+  () => {
+    expect(filterWith(data, 'L ul'))
+      .toStrictEqual([]);
+    expect(filterWith([], '266'))
+      .toStrictEqual([]);
+  },
+);
 
 test('Filter an array by a not embedded number field', () => {
   expect(filterWith(data, '266'))
