@@ -197,6 +197,26 @@ describe('FilterWith function test suite', () => {
       .toMatchSnapshot();
   });
 
+  test('Filter an array by an array', () => {
+    const inputArray: Record<string, string | number | string[]>[] = [
+      {
+        string: 'abc',
+        arr: ['a', 'b'],
+      },
+      {
+        number: 34,
+        string: 'www',
+        set: 4,
+      }];
+
+    const elementToFind = ['a', 'b'];
+
+    const output = filterWith(inputArray, elementToFind);
+
+    expect(output)
+      .toMatchSnapshot();
+  });
+
   test('Filter an array by a set', () => {
     const inputArray: Record<string, string | number | Set<number> | Set<Set<number>>>[] = [
       {

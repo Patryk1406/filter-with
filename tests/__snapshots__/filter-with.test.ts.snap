@@ -106,6 +106,18 @@ Array [
 ]
 `;
 
+exports[`FilterWith function test suite Filter an array by an array 1`] = `
+Array [
+  Object {
+    "arr": Array [
+      "a",
+      "b",
+    ],
+    "string": "abc",
+  },
+]
+`;
+
 exports[`FilterWith function test suite Filter an array by an embedded number field in the friends object. 1`] = `
 Array [
   Object {
