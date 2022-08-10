@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterWith function test suite Filter an array by a map 1`] = `
+Array [
+  Object {
+    "number": 34,
+    "set": Map {
+      "a" => 1,
+      "b" => 2,
+    },
+    "string": "www",
+  },
+]
+`;
+
+exports[`FilterWith function test suite Filter an array by a not embedded number field 1`] = `
+Array [
+  Object {
+    "age": 266,
+    "company": "GORGANIC",
+    "email": "marinaporter@gorganic.com",
+    "eyeColor": "brown",
+    "friends": Array [
+      Object {
+        "id": 0,
+        "name": "Blair Hill",
+      },
+      Object {
+        "id": 123,
+        "name": "Ebony Jimenez",
+      },
+    ],
+    "gender": "female",
+    "id": "5e985a07148cfba58c860ec2",
+    "name": "Marina Porter",
+    "phone": "+1 (867) 417-3497",
+    "tags": Array [
+      "laborum",
+      "aliquip",
+      "sit",
+      "adipisicing",
+      "aute",
+      "cupidatat",
+      "aliquip",
+    ],
+  },
+]
+`;
+
+exports[`FilterWith function test suite Filter an array by a not embedded string field. 1`] = `
+Array [
+  Object {
+    "age": 24,
+    "company": "VELOS",
+    "email": "cummingsbaxter@velos.com",
+    "eyeColor": "brown",
+    "friends": Array [
+      Object {
+        "id": 0,
+        "name": "Sheppard Jensen",
+      },
+    ],
+    "gender": "male",
+    "id": "5e985a07feddae7617ac44f6",
+    "name": "Cummings Baxter",
+    "phone": "+1 (907) 482-2451",
+    "tags": Array [
+      "labore",
+      "elit",
+      "excepteur",
+      "nisi",
+      "mollit",
+      "anim",
+      "aliquip",
+    ],
+  },
+]
+`;
+
+exports[`FilterWith function test suite Filter an array by a number embedded in a map 1`] = `
+Array [
+  Object {
+    "number": 34,
+    "set": Map {
+      "a" => 1,
+      "b" => 2,
+    },
+    "string": "www",
+  },
+]
+`;
+
+exports[`FilterWith function test suite Filter an array by a set 1`] = `
+Array [
+  Object {
+    "set": Set {
+      Set {
+        1,
+        2,
+        3,
+        4,
+      },
+    },
+    "string": "abc",
+  },
+]
+`;
+
+exports[`FilterWith function test suite Filter an array by an embedded number field in the friends object. 1`] = `
+Array [
+  Object {
+    "age": 266,
+    "company": "GORGANIC",
+    "email": "marinaporter@gorganic.com",
+    "eyeColor": "brown",
+    "friends": Array [
+      Object {
+        "id": 0,
+        "name": "Blair Hill",
+      },
+      Object {
+        "id": 123,
+        "name": "Ebony Jimenez",
+      },
+    ],
+    "gender": "female",
+    "id": "5e985a07148cfba58c860ec2",
+    "name": "Marina Porter",
+    "phone": "+1 (867) 417-3497",
+    "tags": Array [
+      "laborum",
+      "aliquip",
+      "sit",
+      "adipisicing",
+      "aute",
+      "cupidatat",
+      "aliquip",
+    ],
+  },
+]
+`;
+
+exports[`FilterWith function test suite Filter an array by an embedded string field in the friends object. 1`] = `
+Array [
+  Object {
+    "age": 25,
+    "company": "TOYLETRY",
+    "email": "barlowferguson@toyletry.com",
+    "eyeColor": "green",
+    "friends": Array [
+      Object {
+        "id": 0,
+        "name": "Delacruz Acevedo",
+      },
+      Object {
+        "id": 1,
+        "name": "Gloria Tanner",
+      },
+      Object {
+        "id": 2,
+        "name": "Cantrell Myers",
+      },
+      Object {
+        "id": 3,
+        "name": "Fisher Leonard",
+      },
+    ],
+    "gender": "male",
+    "id": "5e985a074984f9f08ccaaa4c",
+    "name": "Barlow Ferguson",
+    "phone": "+1 (837) 484-2231",
+    "tags": Array [
+      "est",
+      "dolor",
+      "minim",
+      "ut",
+      "anim",
+      "culpa",
+      "non",
+    ],
+  },
+]
+`;
+
+exports[`FilterWith function test suite Filter an array by an embedded string field in the tags object. 1`] = `
+Array [
+  Object {
+    "age": 24,
+    "company": "VELOS",
+    "email": "cummingsbaxter@velos.com",
+    "eyeColor": "brown",
+    "friends": Array [
+      Object {
+        "id": 0,
+        "name": "Sheppard Jensen",
+      },
+    ],
+    "gender": "male",
+    "id": "5e985a07feddae7617ac44f6",
+    "name": "Cummings Baxter",
+    "phone": "+1 (907) 482-2451",
+    "tags": Array [
+      "labore",
+      "elit",
+      "excepteur",
+      "nisi",
+      "mollit",
+      "anim",
+      "aliquip",
+    ],
+  },
+  Object {
+    "age": 32,
+    "company": "KENGEN",
+    "email": "madelyndickson@kengen.com",
+    "eyeColor": "brown",
+    "friends": Array [
+      Object {
+        "id": 0,
+        "name": "Bruce Barton",
+      },
+      Object {
+        "id": 1,
+        "name": "Juliet Schmidt",
+      },
+      Object {
+        "id": 2,
+        "name": "Horton Haley",
+      },
+      Object {
+        "id": 3,
+        "name": "Herminia Witt",
+      },
+    ],
+    "gender": "female",
+    "id": "5e985a0709dfa1e6fd93c6ad",
+    "name": "Madelyn Dickson",
+    "phone": "+1 (984) 521-2439",
+    "tags": Array [
+      "nisi",
+      "veniam",
+      "dolore",
+      "officia",
+      "ex",
+      "non",
+      "pariatur",
+    ],
+  },
+]
+`;
