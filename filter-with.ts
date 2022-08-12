@@ -30,7 +30,8 @@ const searchThroughObject = <T, K>(
       return false;
     });
 
-export const filterWith = <T, K>(array: (Record<string, T>)[], elementToFind: K) => {
+export const filterWith = <T, K>(
+  array: Record<string, T>[], elementToFind: K): [] | Record<string, T>[] => {
   if (!elementToFind
     || isStringAndHasNotThreeConsecutiveChars(elementToFind)
     || array.length === 0) {

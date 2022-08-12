@@ -132,8 +132,21 @@ describe('FilterWith function test suite', () => {
   test('Filter an array by a not embedded string field.', () => {
     const elementToFind = 'Cummings Baxter';
 
-    const output = filterWith(inputData, elementToFind);
-    console.debug(output);
+    const output = filterWith(inputData, elementToFind) as {
+      id: string;
+      age: number;
+      eyeColor: string;
+      name: string;
+      gender: string;
+      company: string;
+      email: string;
+      phone: string;
+      tags: string[];
+      friends: {
+        id: number;
+        name: string;
+      }[]
+    }[];
 
     expect(output)
       .toMatchSnapshot();
@@ -142,7 +155,21 @@ describe('FilterWith function test suite', () => {
   test('Filter an array by an embedded string field in the tags object.', () => {
     const elementToFind = 'nisi';
 
-    const output = filterWith(inputData, elementToFind);
+    const output = filterWith(inputData, elementToFind) as {
+      id: string;
+      age: number;
+      eyeColor: string;
+      name: string;
+      gender: string;
+      company: string;
+      email: string;
+      phone: string;
+      tags: string[];
+      friends: {
+        id: number;
+        name: string;
+      }[]
+    }[];
 
     expect(filterWith(output, 'nisi'))
       .toMatchSnapshot();
@@ -151,7 +178,21 @@ describe('FilterWith function test suite', () => {
   test('Filter an array by an embedded string field in the friends object.', () => {
     const elementToFind = 'Delacruz Acevedo';
 
-    const output = filterWith(inputData, elementToFind);
+    const output = filterWith(inputData, elementToFind) as {
+      id: string;
+      age: number;
+      eyeColor: string;
+      name: string;
+      gender: string;
+      company: string;
+      email: string;
+      phone: string;
+      tags: string[];
+      friends: {
+        id: number;
+        name: string;
+      }[]
+    }[];
 
     expect(output)
       .toMatchSnapshot();
@@ -162,18 +203,18 @@ describe('FilterWith function test suite', () => {
     () => {
       const elementToFind = 'L ul';
 
-      const output = filterWith(inputData, elementToFind);
+      const output = filterWith(inputData, elementToFind) as [];
 
-      const expectedOutput: Record<string, string>[] = [];
+      const expectedOutput: [] = [];
 
       expect(output)
         .toStrictEqual(expectedOutput);
 
-      const emptyArrayInput: Record<string, string>[] = [];
+      const emptyArrayInput: [] = [];
 
       const elementToFind2 = 266;
 
-      const output2 = filterWith(emptyArrayInput, elementToFind2);
+      const output2 = filterWith(emptyArrayInput, elementToFind2) as [];
 
       expect(output2)
         .toStrictEqual(expectedOutput);
@@ -183,7 +224,21 @@ describe('FilterWith function test suite', () => {
   test('Filter an array by a not embedded number field', () => {
     const elementToFind = 266;
 
-    const output = filterWith(inputData, elementToFind);
+    const output = filterWith(inputData, elementToFind) as {
+      id: string;
+      age: number;
+      eyeColor: string;
+      name: string;
+      gender: string;
+      company: string;
+      email: string;
+      phone: string;
+      tags: string[];
+      friends: {
+        id: number;
+        name: string;
+      }[]
+    }[];
 
     expect(output)
       .toMatchSnapshot();
@@ -192,7 +247,21 @@ describe('FilterWith function test suite', () => {
   test('Filter an array by an embedded number field in the friends object.', () => {
     const elementToFind = 266;
 
-    const output = filterWith(inputData, elementToFind);
+    const output = filterWith(inputData, elementToFind) as {
+      id: string;
+      age: number;
+      eyeColor: string;
+      name: string;
+      gender: string;
+      company: string;
+      email: string;
+      phone: string;
+      tags: string[];
+      friends: {
+        id: number;
+        name: string;
+      }[]
+    }[];
 
     expect(output)
       .toMatchSnapshot();
@@ -210,9 +279,9 @@ describe('FilterWith function test suite', () => {
         set: 4,
       }];
 
-    const elementToFind = ['a', 'b'];
+    const elementToFind: string[] = ['a', 'b'];
 
-    const output = filterWith(inputArray, elementToFind);
+    const output = filterWith(inputArray, elementToFind) as { string: string; arr: string[] }[];
 
     expect(output)
       .toMatchSnapshot();
@@ -230,9 +299,12 @@ describe('FilterWith function test suite', () => {
         set: new Set([1]),
       }];
 
-    const elementToFind = new Set([1, 2, 3, 4]);
+    const elementToFind: Set<number> = new Set([1, 2, 3, 4]);
 
-    const output = filterWith(inputArray, elementToFind);
+    const output = filterWith(
+      inputArray,
+      elementToFind,
+    ) as { string: string; set: Set<Set<number>> }[];
 
     expect(output)
       .toMatchSnapshot();
@@ -252,7 +324,10 @@ describe('FilterWith function test suite', () => {
 
     const elementToFind = 1;
 
-    const output = filterWith(inputArray, elementToFind);
+    const output = filterWith(
+      inputArray,
+      elementToFind,
+    ) as { number: number; string: string; set: Map<string, number> }[];
 
     expect(output)
       .toMatchSnapshot();
@@ -270,9 +345,12 @@ describe('FilterWith function test suite', () => {
         set: new Map([['a', 1], ['b', 2]]),
       }];
 
-    const elementToFind = new Map([['a', 1], ['b', 2]]);
+    const elementToFind: Map<string, number> = new Map([['a', 1], ['b', 2]]);
 
-    const output = filterWith(inputArray, elementToFind);
+    const output = filterWith(
+      inputArray,
+      elementToFind,
+    ) as { number: number; string: string; set: Map<string, number> }[];
 
     expect(output)
       .toMatchSnapshot();
