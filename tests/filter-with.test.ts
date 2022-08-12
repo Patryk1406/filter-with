@@ -133,6 +133,7 @@ describe('FilterWith function test suite', () => {
     const elementToFind = 'Cummings Baxter';
 
     const output = filterWith(inputData, elementToFind);
+    console.debug(output);
 
     expect(output)
       .toMatchSnapshot();

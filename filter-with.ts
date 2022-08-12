@@ -1,35 +1,38 @@
 import { isDeepStrictEqual } from 'util';
 
-const hasThreeConsecutiveChars = (phrase: string) => /\w{3,}/.test(phrase.trim());
+const isString = (value: unknown) => typeof value === 'string';
 
-const isSetOrMap = (value: unknown) => value instanceof Set || value instanceof Map;
+const hasThreeConsecutiveChars = (value: string) => /\w{3,}/.test(value.trim());
+
+const isStringAndHasNotThreeConsecutiveChars = (value: unknown): boolean => isString(value)
+  && !hasThreeConsecutiveChars(value as string);
+
+const isSetOrMap = (value: unknown): boolean => value instanceof Set || value instanceof Map;
+
+const isFunction = (value: unknown): boolean => typeof value === 'function';
+
+const isEmptyArray = (value: unknown): boolean => Array.isArray(value) && value.length === 0;
 
 const searchThroughObject = <T, K>(
-  obj: T, phrase: K): boolean => {
-  let result = false;
-  for (const value of Object.values(obj)) {
-    if (result) break;
-    if (!value || typeof value === 'function'
-      || (typeof value === 'string' && !hasThreeConsecutiveChars(value))
-      || (Array.isArray(value) && value.length === 0)) {
-      continue;
-    }
-    if (isDeepStrictEqual(value, phrase)) {
-      result = true;
-      break;
-    }
-    if (typeof value === 'object') {
-      result = isSetOrMap(value)
-        ? searchThroughObject(Array.from(value.values()), phrase)
-        : searchThroughObject(value, phrase);
-    }
-  }
-  return result;
-};
+  obj: T, phrase: K): boolean => Object.values(obj)
+    .some((value) => {
+      if (!value || isFunction(value)
+      || isStringAndHasNotThreeConsecutiveChars(value)
+      || isEmptyArray(value)) {
+        return false;
+      }
+      if (isDeepStrictEqual(value, phrase)) return true;
+      if (typeof value === 'object') {
+        return isSetOrMap(value)
+          ? searchThroughObject(Array.from(value.values()), phrase)
+          : searchThroughObject(value, phrase);
+      }
+      return false;
+    });
 
 export const filterWith = <T, K>(array: (Record<string, T>)[], elementToFind: K) => {
   if (!elementToFind
-    || (typeof elementToFind === 'string' && !hasThreeConsecutiveChars(elementToFind))
+    || isStringAndHasNotThreeConsecutiveChars(elementToFind)
     || array.length === 0) {
     return [];
   }
