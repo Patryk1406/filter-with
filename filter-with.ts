@@ -4,7 +4,7 @@ const isString = (value: unknown) => typeof value === 'string';
 
 const hasThreeConsecutiveChars = (value: string) => /\w{3,}/.test(value.trim());
 
-const isStringAndHasNotThreeConsecutiveChars = (value: unknown): boolean => isString(value)
+const canBeSearchedString = (value: unknown): boolean => isString(value)
   && !hasThreeConsecutiveChars(value as string);
 
 const isSetOrMap = (value: unknown): boolean => value instanceof Set || value instanceof Map;
@@ -13,19 +13,21 @@ const isFunction = (value: unknown): boolean => typeof value === 'function';
 
 const isEmptyArray = (value: unknown): boolean => Array.isArray(value) && value.length === 0;
 
+const cannotBeTarget = (value: unknown): boolean => !value || isFunction(value)
+  || canBeSearchedString(value)
+  || isEmptyArray(value);
+
 const searchThroughObject = <T, K>(
-  obj: T, phrase: K): boolean => Object.values(obj)
+  obj: T, target: K): boolean => Object.values(obj)
     .some((value) => {
-      if (!value || isFunction(value)
-      || isStringAndHasNotThreeConsecutiveChars(value)
-      || isEmptyArray(value)) {
+      if (cannotBeTarget(value)) {
         return false;
       }
-      if (isDeepStrictEqual(value, phrase)) return true;
+      if (isDeepStrictEqual(value, target)) return true;
       if (typeof value === 'object') {
         return isSetOrMap(value)
-          ? searchThroughObject(Array.from(value.values()), phrase)
-          : searchThroughObject(value, phrase);
+          ? searchThroughObject(Array.from(value.values()), target)
+          : searchThroughObject(value, target);
       }
       return false;
     });
@@ -33,7 +35,7 @@ const searchThroughObject = <T, K>(
 export const filterWith = <T, K>(
   array: Record<string, T>[], elementToFind: K): [] | Record<string, T>[] => {
   if (!elementToFind
-    || isStringAndHasNotThreeConsecutiveChars(elementToFind)
+    || canBeSearchedString(elementToFind)
     || array.length === 0) {
     return [];
   }
